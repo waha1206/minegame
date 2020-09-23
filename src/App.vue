@@ -1,29 +1,49 @@
 <template>
   <div id="app">
-    <h1>這個是掃雷遊戲！</h1>
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <h1>掃雷遊戲</h1>
+    <div class="container">
+      <div class="main"></div>
+      <div class="aside">
+        <el-radio-group v-model="level" size="mini">
+          <el-radio-button label="簡單">簡單</el-radio-button>
+          <el-radio-button label="中級">中級</el-radio-button>
+          <el-radio-button label="高級">高級</el-radio-button>
+        </el-radio-group>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
+import "element-ui/lib/theme-chalk/index.css";
 
 export default {
-  name: "App",
-  components: {
-    // HelloWorld
-  }
+  name: "app",
+  data: function() {
+    return {
+      level: "中級"
+    };
+  },
+  components: {}
 };
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  .container {
+    display: flex;
+    & > div {
+      border: 1px solid #ccc;
+    }
+  }
+
+  .main {
+    flex: 5 0 500px;
+    min-height: 300px;
+  }
+  .aside {
+    flex: 2 0 200px;
+    min-height: 300px;
+  }
 }
 </style>
