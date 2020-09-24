@@ -4,11 +4,23 @@
     <div class="container">
       <div class="main"></div>
       <div class="aside">
-        <el-radio-group v-model="level" size="mini">
-          <el-radio-button label="簡單">簡單</el-radio-button>
-          <el-radio-button label="中級">中級</el-radio-button>
-          <el-radio-button label="高級">高級</el-radio-button>
+        <el-radio-group v-model="level" size="mini" @change="gameInit">
+          <el-radio-button label="簡單"></el-radio-button>
+          <el-radio-button label="中級"></el-radio-button>
+          <el-radio-button label="高級"></el-radio-button>
         </el-radio-group>
+        <div class="block">
+          <span class="demonstration" :min="5" :max="100"
+            >列數：{{ cols }}</span
+          >
+          <el-slider v-model="cols"></el-slider>
+        </div>
+        <div class="block">
+          <span class="demonstration" :min="5" :max="100"
+            >行數：{{ rows }}</span
+          >
+          <el-slider v-model="rows"></el-slider>
+        </div>
       </div>
     </div>
   </div>
@@ -21,10 +33,17 @@ export default {
   name: "app",
   data: function() {
     return {
-      level: "中級"
+      level: "中級",
+      cols: 10,
+      rows: 10
     };
   },
-  components: {}
+  components: {},
+  methods: {
+    gameInit() {
+      console.log(this.level);
+    }
+  }
 };
 </script>
 
@@ -35,6 +54,11 @@ export default {
     & > div {
       border: 1px solid #ccc;
     }
+  }
+
+  .block {
+    margin-top: 10px;
+    border-top: 1px solid blue;
   }
 
   .main {
